@@ -9,8 +9,7 @@ public class NoAnemicClass {
 	private LocalDateTime time;
 
 	public NoAnemicClass(LocalDateTime time) {
-		Objects.requireNonNull(time);
-		this.time = time;
+		this.time = Objects.requireNonNull(time);
 	}
 
 	public String shortWay() {
