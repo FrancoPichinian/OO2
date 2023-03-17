@@ -12,9 +12,8 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		AnemicClass anemicClass = new AnemicClass();
+		AnemicClass anemicClass = new AnemicClass(LocalDateTime.now());
 
-		anemicClass.setTime(LocalDateTime.now());
 		LocalDateTime date = anemicClass.getTime();
 
 		System.out.println("Anemic Class");
