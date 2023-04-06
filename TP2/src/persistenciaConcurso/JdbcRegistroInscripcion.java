@@ -20,7 +20,7 @@ public class JdbcRegistroInscripcion implements RegistroInscripcion {
 			statement.executeUpdate();
 			statement.close();
 		} catch (SQLException e) {
-			throw new RuntimeException("No se puedo conectar a la base de datos");
+			throw new RuntimeException("No se puede conectar a la base de datos");
 		} finally {
 			conexionDB.cerrar();
 		}

@@ -14,11 +14,11 @@ public class TestRestaurante {
 		DispositivoElectronico dispositivo = new DispositivoElectronico(registro);
 		Plato tallarines = new Plato("tallarines", 400);
 		Bebida agua = new Bebida("agua", 100);
-		double valorEsperado = ((tallarines.calcularMonto(1) + agua.calcularMonto(1)) * Descuento.VISA) * 1.02;
+		double valorEsperado = ((tallarines.calcularMonto(1) + agua.calcularMonto(1)) * 0.97) * 1.02;
 		dispositivo.agregarOrden(tallarines, 1);
 		dispositivo.agregarOrden(agua, 1);
 		dispositivo.confimarPedido();
-		dispositivo.pagar(new TarjetaCreditoVisa(), Propina.PROPINA_2);
+		dispositivo.pagar(new TarjetaCreditoVisa(), 0.02);
 		Assert.assertEquals(valorEsperado, dispositivo.montoTotal(), 0);
 
 		String fechaYMonto = new FechaFormateada(LocalDate.now()).obtenerFechaFormateada() + "||"
@@ -31,11 +31,11 @@ public class TestRestaurante {
 		DispositivoElectronico dispositivo = new DispositivoElectronico(registro);
 		Plato tallarines = new Plato("tallarines", 400);
 		Bebida agua = new Bebida("agua", 100);
-		double valorEsperado = ((tallarines.calcularMonto(2) + agua.calcularMonto(1)) * Descuento.MASTERCARD) * 1.03;
+		double valorEsperado = ((tallarines.calcularMonto(2) + agua.calcularMonto(1)) * 0.98) * 1.03;
 		dispositivo.agregarOrden(tallarines, 2);
 		dispositivo.agregarOrden(agua, 1);
 		dispositivo.confimarPedido();
-		dispositivo.pagar(new TarjetaCreditoMastercard(), Propina.PROPINA_3);
+		dispositivo.pagar(new TarjetaCreditoMastercard(), 0.03);
 		Assert.assertEquals(valorEsperado, dispositivo.montoTotal(), 0);
 
 		String fechaYMonto = new FechaFormateada(LocalDate.now()).obtenerFechaFormateada() + "||"
@@ -48,11 +48,11 @@ public class TestRestaurante {
 		DispositivoElectronico dispositivo = new DispositivoElectronico(registro);
 		Plato tallarines = new Plato("tallarines", 400);
 		Bebida agua = new Bebida("agua", 100);
-		double valorEsperado = ((tallarines.calcularMonto(2) + agua.calcularMonto(2)) * Descuento.COMARCA_PLUS) * 1.05;
+		double valorEsperado = ((tallarines.calcularMonto(2) + agua.calcularMonto(2)) * 0.98) * 1.05;
 		dispositivo.agregarOrden(tallarines, 2);
 		dispositivo.agregarOrden(agua, 2);
 		dispositivo.confimarPedido();
-		dispositivo.pagar(new TarjetaCreditoComarcaPlus(), Propina.PROPINA_5);
+		dispositivo.pagar(new TarjetaCreditoComarcaPlus(), 0.05);
 		Assert.assertEquals(valorEsperado, dispositivo.montoTotal(), 0);
 
 		String fechaYMonto = new FechaFormateada(LocalDate.now()).obtenerFechaFormateada() + "||"
@@ -69,7 +69,7 @@ public class TestRestaurante {
 		dispositivo.agregarOrden(tallarines, 1);
 		dispositivo.agregarOrden(agua, 1);
 		dispositivo.confimarPedido();
-		dispositivo.pagar(new TarjetaCredito(), Propina.PROPINA_2);
+		dispositivo.pagar(new TarjetaCredito(), 0.02);
 		Assert.assertEquals(valorEsperado, dispositivo.montoTotal(), 0);
 
 		String fechaYMonto = new FechaFormateada(LocalDate.now()).obtenerFechaFormateada() + "||"
