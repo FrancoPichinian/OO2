@@ -1,0 +1,7 @@
+{
+  "acciones": [
+    "pichiñan.utilizacion.AccionUno",
+    "pichiñan.utilizacion.AccionDos"
+  ],
+  "max-threads": 3
+}
