@@ -1,0 +1,2 @@
+Fecha:2023-07-14| Litros:10.0| Monto total:2700.0
+Fecha:2023-07-17| Litros:10.0| Monto total:3900.0
