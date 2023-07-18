@@ -17,6 +17,7 @@ public class DefaultVentaService implements VentaService {
 	private AlmacenamientoVentas almacenamientoVentas;
 	private static final double PRECIO_SUPER = 270.0;
 	private static final double PRECIO_EXTRA_SUPER = 390.0;
+	private static final double MONTO_MAX = 100000;
 	private static final String MSG = "No fue posible registrar la venta";
 
 	public DefaultVentaService(RepositorioVentas repositorioVentas, AlmacenamientoVentas almacenamientoVentas) {
@@ -56,9 +57,13 @@ public class DefaultVentaService implements VentaService {
 			LocalDate fecha = LocalDate.parse(venta[0]);
 			double litros = Double.parseDouble(venta[1]);
 			double montoTotal = Double.parseDouble(venta[2]);
-			VentaRecord ventaRecord = new VentaRecord(fecha, litros, montoTotal);
+			VentaRecord ventaRecord = new VentaRecord(fecha, litros, montoTotal, esImportante(montoTotal));
 			ventas.add(ventaRecord);
 		}
 		return ventas;
+	}
+
+	private String esImportante(double montoTotal) {
+		return montoTotal > MONTO_MAX ? "Sí" : "No";
 	}
 }

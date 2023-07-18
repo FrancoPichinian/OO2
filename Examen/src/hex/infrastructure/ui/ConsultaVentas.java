@@ -21,7 +21,6 @@ public class ConsultaVentas extends JFrame {
 	private JScrollPane scrollPane = new JScrollPane();
 	private JTable tabla = new JTable();
 	private Object[] titulos = { "Fecha_venta", "Litros_cargados", "Monto_facturado", "Es_importante" };
-	private static final double MONTO_MAX = 100000;
 	private DefaultTableModel modelo = new DefaultTableModel(titulos, 0) {
 		private static final long serialVersionUID = 1L;
 
@@ -49,11 +48,7 @@ public class ConsultaVentas extends JFrame {
 		List<VentaRecord> ventasParseadas = ventas.ventas();
 		IntStream.range(0, ventasParseadas.size()).forEach(i -> {
 			modelo.addRow(new Object[] { ventasParseadas.get(i).fecha(), ventasParseadas.get(i).litros(),
-					ventasParseadas.get(i).montoTotal(), esImportante(ventasParseadas.get(i).montoTotal()) });
+					ventasParseadas.get(i).montoTotal(), ventasParseadas.get(i).esImportante() });
 		});
-	}
-
-	private String esImportante(double montoTotal) {
-		return montoTotal > MONTO_MAX ? "Sí" : "No";
 	}
 }
